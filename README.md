@@ -2,6 +2,15 @@
 
 Easily deploy Metabase using Docker container with this simple setup. It targets port 80, allowing you to access the Metabase instance directly through your IP address in a browser.
 
+
+<!-- vim-markdown-toc GFM -->
+
+* [Prerequisites](#prerequisites)
+* [Set Up](#set-up)
+* [Create HTTPS Certificate](#create-https-certificate)
+
+<!-- vim-markdown-toc -->
+
 ## Prerequisites
 - Docker and Docker Compose installed on your system.
 
@@ -12,8 +21,6 @@ Easily deploy Metabase using Docker container with this simple setup. It targets
 ```shell
 mkdir metabase
 cd metabase
-docker-compose pull
-docker-compose up
 ```
 
 2. Create a ´docker-compose.yml´ file with the following content:
@@ -51,5 +58,87 @@ docker-compose pull
 4. Start the Metabase and PostgreSQL containers:
 
 ```shell
+docker-compose up
+```
+
+## Create HTTPS Certificate
+
+1. Stop the Docker Compose services:
+```
+docker-compose down
+```
+
+2. Update the package list and install Certbot:
+```
+sudo apt-get update
+sudo apt-get install Certbot
+```
+
+3. Generate SSL certificates using Certbot:
+```
+sudo certbot certonly --standalone -d example.com --preferred-challenges http --agree-tos -m your@email.com --keep-until-expiring
+```
+
+4. Copy the generated certificates to your project directory:
+```
+sudo cp -r /etc/letsencrypt/live/example.com ./certs
+sudo chown -R $USER:$USER ./certificates
+```
+
+5. Install Nginx:
+```
+sudo apt update
+sudo apt install nginx
+```
+
+6. Create a new Nginx configuration file:
+```
+sudo nano /etc/nginx/sites-available/example.com
+```
+
+7. Add the following configuration to the file, replacing `example.com` with your domain and `YOUR_APP_IP:3000` with the IP and port of your application:
+```
+server {
+    listen 80;
+    server_name example.com;
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    server_name example.com;
+
+    ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
+
+    location / {
+       proxy_pass http://YOUR_APP_IP:3000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+```
+
+
+8. Create a symbolic link to the `sites-enabled` directory:
+```
+sudo ln -s /etc/nginx/sites-available/analytics.valpiccola.com /etc/nginx/sites-enabled/
+```
+
+9. Test the Nginx configuration:
+```
+sudo nginx -t
+```
+
+10. Restart Nginx:
+
+```
+sudo systemctl restart nginx
+```
+
+11. Start the Docker Compose services:
+```
 docker-compose up
 ```
