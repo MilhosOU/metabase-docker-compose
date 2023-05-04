@@ -86,7 +86,7 @@ sudo certbot certonly --standalone -d example.com --preferred-challenges http --
 4. Copy the generated certificates to your project directory:
 ```
 sudo cp -r /etc/letsencrypt/live/example.com ./certs
-sudo chown -R $USER:$USER ./certificates __> MAYBE NOT USEFUL
+sudo chown -R $USER:$USER ./certificates
 ```
 
 5. Install Nginx:
