@@ -7,7 +7,7 @@ Easily deploy Metabase using Docker container with this simple setup. It targets
 
 * [Prerequisites](#prerequisites)
 * [Set Up](#set-up)
-* [Create HTTPS Certificate](#create-https-certificate)
+* [(OPTIONAL) Create HTTPS Certificate](#optional-create-https-certificate)
 
 <!-- vim-markdown-toc -->
 
@@ -61,7 +61,9 @@ docker-compose pull
 docker-compose up
 ```
 
-## Create HTTPS Certificate
+## (OPTIONAL) Create HTTPS Certificate
+
+<details>
 
 1. Stop the Docker Compose services:
 ```
@@ -142,3 +144,5 @@ sudo systemctl restart nginx
 ```
 docker-compose up
 ```
+
+</details>
