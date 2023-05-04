@@ -65,6 +65,10 @@ docker-compose up
 
 <details>
 
+> **Warning**
+> In order to make it working, you need to update your `docker-container.yml`:
+> Change from `80:3000` to `3000:3000`
+
 1. Stop the Docker Compose services:
 ```
 docker-compose down
