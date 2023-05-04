@@ -64,8 +64,8 @@ docker-compose up
 ## (OPTIONAL) Create HTTPS Certificate
 
 <details>
-<br>
-> **IMPORTANT: You need to update your `docker-container.yml`, change from `80:3000` to `3000:3000`**
+
+⚠️ Warning: You need to update your docker-compose.yml. Change the port mapping from 80:3000 to 3000:3000.
 
 1. Stop the Docker Compose services:
 ```
