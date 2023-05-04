@@ -1,4 +1,4 @@
-# metabase-docker-container
+# metabase-docker-compose
 
 Easily deploy Metabase using Docker container with this simple setup. It targets port 80, allowing you to access the Metabase instance directly through your IP address in a browser.
 
