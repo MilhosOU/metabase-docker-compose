@@ -77,7 +77,7 @@ docker-compose down
 2. Update the package list and install Certbot:
 ```
 sudo apt-get update
-sudo apt-get install Certbot
+sudo apt install -y certbot python3-certbot-apache
 ```
 
 3. Generate SSL certificates using Certbot:
@@ -88,7 +88,7 @@ sudo certbot certonly --standalone -d example.com --preferred-challenges http --
 4. Copy the generated certificates to your project directory:
 ```
 sudo cp -r /etc/letsencrypt/live/example.com ./certs
-sudo chown -R $USER:$USER ./certificates
+sudo chown -R $USER:$USER ./certificates __> MAYBE NOT USEFUL
 ```
 
 5. Install Nginx:
@@ -99,7 +99,7 @@ sudo apt install nginx
 
 6. Create a new Nginx configuration file:
 ```
-sudo nano /etc/nginx/sites-available/example.com
+sudo touch /etc/nginx/sites-available/example.com
 ```
 
 7. Add the following configuration to the file, replacing `example.com` with your domain and `YOUR_APP_IP:3000` with the IP and port of your application:
@@ -130,7 +130,7 @@ server {
 
 8. Create a symbolic link to the `sites-enabled` directory:
 ```
-sudo ln -s /etc/nginx/sites-available/analytics.valpiccola.com /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/
 ```
 
 9. Test the Nginx configuration:
