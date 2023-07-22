@@ -7,6 +7,7 @@ Easily deploy Metabase using Docker container with this simple setup. It targets
 
 * [Prerequisites](#prerequisites)
 * [Set Up](#set-up)
+* [Update Metabase](#update-metabase)
 * [(OPTIONAL) Create HTTPS Certificate](#optional-create-https-certificate)
 
 <!-- vim-markdown-toc -->
@@ -60,6 +61,50 @@ docker-compose pull
 ```shell
 docker-compose up
 ```
+
+## Update Metabase
+
+From time to time, Metabase releases new versions with feature improvements, bug fixes, or security patches. It's a good practice to keep your Metabase instance up-to-date. Here are the steps to update Metabase:
+
+1. **Stop Nginx Service (if running)**:
+   
+   Before making any changes, especially if you have set up HTTPS as shown above, ensure the Nginx service is stopped.
+   
+   ```shell
+   sudo systemctl stop nginx 
+   ```
+
+2. **Stop Current Docker Services**:
+   
+   Ensure your Metabase and PostgreSQL services are stopped before updating.
+   
+   ```shell
+   docker-compose down
+   ```
+
+3. **Pull the Latest Metabase Image**:
+   
+   This step fetches the latest version of the Metabase Docker image.
+   
+   ```shell
+   docker pull metabase/metabase:latest
+   ```
+
+4. **Start Nginx Service**:
+
+   If you're using Nginx for SSL termination, start it back up.
+
+   ```shell
+   sudo systemctl start nginx
+   ```
+
+5. **Restart Docker Services**:
+   
+   Now, with the updated Metabase image, start the services again.
+   
+   ```shell
+   docker-compose up
+   ```
 
 ## (OPTIONAL) Create HTTPS Certificate
 
