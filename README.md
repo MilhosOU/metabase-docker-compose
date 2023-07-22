@@ -17,6 +17,8 @@ Easily deploy Metabase using Docker container with this simple setup. It targets
 
 ## Set Up
 
+<details>
+
 1. Create a directory called Metabase
 
 ```shell
@@ -62,7 +64,11 @@ docker-compose pull
 docker-compose up
 ```
 
+</details>
+
 ## Update Metabase
+
+<details>
 
 From time to time, Metabase releases new versions with feature improvements, bug fixes, or security patches. It's a good practice to keep your Metabase instance up-to-date. Here are the steps to update Metabase:
 
@@ -105,6 +111,8 @@ From time to time, Metabase releases new versions with feature improvements, bug
    ```shell
    docker-compose up
    ```
+
+</details>
 
 ## (OPTIONAL) Create HTTPS Certificate
 
