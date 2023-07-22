@@ -30,7 +30,7 @@ cd metabase
 version: '3'
 services:
   metabase:
-    image: metabase/metabase
+    image: metabase/metabase:latest
     ports:
       - 80:3000
     environment:
