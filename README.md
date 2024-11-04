@@ -7,13 +7,13 @@ Easily deploy Metabase using Docker container with this simple setup. It targets
 
 * [Prerequisites](#prerequisites)
 * [Set Up](#set-up)
-* [Update Metabase](#update-metabase)
+* [(OPTIONAL) Update Metabase](#update-metabase)
 * [(OPTIONAL) Create HTTPS Certificate](#optional-create-https-certificate)
 
 <!-- vim-markdown-toc -->
 
 ## Prerequisites
-- Docker and Docker Compose installed on your system.
+- Docker Compose installed on your system (see [this tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04))
 
 ## Set Up
 
