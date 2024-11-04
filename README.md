@@ -17,8 +17,6 @@ Easily deploy Metabase using Docker container with this simple setup. It targets
 
 ## Set Up
 
-<details>
-
 1. Create a directory called Metabase
 
 ```shell
@@ -64,9 +62,7 @@ docker-compose pull
 docker-compose up
 ```
 
-</details>
-
-## Update Metabase
+## (OPTIONAL) Update Metabase
 
 <details>
 
