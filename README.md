@@ -7,7 +7,7 @@ Easily deploy Metabase using Docker container with this simple setup. It targets
 
 * [Prerequisites](#prerequisites)
 * [Set Up](#set-up)
-* [(OPTIONAL) Update Metabase](#update-metabase)
+* [(OPTIONAL) Update Metabase](#optional-update-metabase)
 * [(OPTIONAL) Create HTTPS Certificate](#optional-create-https-certificate)
 
 <!-- vim-markdown-toc -->
